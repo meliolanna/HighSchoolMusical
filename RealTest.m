@@ -8,9 +8,13 @@ Z_G5 = readmatrix('Z_G5_784_Hz_13x9.csv');
 % Assembling the Cell Array in the order[F2, A4, C5, E5, G5]
 ImpedanceData = {Z_F2, Z_A4, Z_C5, Z_E5, Z_G5};
 
+% Dimentions
+X_MIN = 0.1; X_MAX = 0.9;
+Y_MIN = 0.1; Y_MAX = 1.3;
+
 %%
 % Function to find the best solution
-[best_solution, min_total_cost]  = find_best_path_greedy(ImpedanceData);
+[best_solution, min_total_cost]  = find_best_path_greedy(ImpedanceData, X_MIN, X_MAX, Y_MIN, Y_MAX);
 
 % Plot of the bridge best solution
 figure;
@@ -56,9 +60,13 @@ disp('----------------------------------------');
 disp(['Costo Totale (Variazione Minima Z): ', num2str(min_cost)]);
 
 % ========================================
+
+
+
+
 %%
 % Colleting all the solutions in the order from the best to the worst 
-all_solutions = find_all_paths_greedy(ImpedanceData);
+all_solutions = find_all_paths_greedy(ImpedanceData, X_MIN, X_MAX, Y_MIN, Y_MAX);
 
 if isempty(all_solutions)
     disp('No solution found.');
@@ -122,4 +130,5 @@ scatter(sol(end, 1), sol(end, 2), 100, 'b', 'filled', 'DisplayName', 'End');
 view(2); % Vista 2D
 colormap('jet');
 colorbar;
+
 hold off;
