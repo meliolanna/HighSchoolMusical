@@ -1,10 +1,8 @@
-function [all_solutions_sorted] = find_all_paths_greedy(ImpedanceData)
+function [all_solutions_sorted] = find_all_paths_greedy(ImpedanceData, X_MIN, X_MAX, Y_MIN, Y_MAX)
 % Trova e ordina tutti i percorsi greedy trovati partendo da tutti i minimi
 % della prima frequenza.
 
 % --- Parametri di Griglia e Ricerca ---
-X_MIN = 0.1; X_MAX = 0.9;
-Y_MIN = 0.1; Y_MAX = 1.3;
 N_X = 9; N_Y = 13;
 STEP_SEARCH = 0.1; 
 SEARCH_RADIUS = 3;
@@ -55,5 +53,6 @@ all_costs = [all_results.cost];
 all_solutions_sorted = all_results(sorted_indices);
 
 disp('Calcolo completato. Le soluzioni sono state ordinate per costo crescente.');
+
 
 end
