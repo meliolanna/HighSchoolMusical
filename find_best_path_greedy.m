@@ -1,4 +1,4 @@
-function [best_solution, min_total_cost] = find_best_path_greedy(ImpedanceData)
+function [best_solution, min_total_cost] = find_best_path_greedy(ImpedanceData, X_MIN, X_MAX, Y_MIN, Y_MAX)
 % Trova il percorso a minima impedenza iterando su tutti i minimi
 % della prima frequenza.
 %
@@ -6,8 +6,6 @@ function [best_solution, min_total_cost] = find_best_path_greedy(ImpedanceData)
 %                la matrice 9x13 di impedenza per la frequenza k.
 
 % --- Parametri di Griglia e Ricerca ---
-X_MIN = 0.1; X_MAX = 0.9;
-Y_MIN = 0.1; Y_MAX = 1.3;
 N_X = 9; N_Y = 13;
 STEP_SIZE_X = (X_MAX - X_MIN) / (N_X - 1); % ~ 0.125
 STEP_SIZE_Y = (Y_MAX - Y_MIN) / (N_Y - 1); % ~ 0.116
@@ -53,5 +51,6 @@ for p = 1:size(start_points, 1)
 end
 
 disp(['Percorso a minima impedenza trovato con costo totale: ', num2str(min_total_cost)]);
+
 
 end
